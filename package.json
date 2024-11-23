@@ -2,17 +2,24 @@
   "name": "@mb-medibook/common",
   "version": "1.0.1",
   "description": "common module",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "author": "allaj",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "mongodb": "^6.11.0",
+    "mongoose": "^8.8.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/mongoose": "^5.11.96",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
