@@ -2,13 +2,13 @@ import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 import { ForbidonError } from "../errors/error.forbidon";
 
-export interface JWTpayloadType {
+export interface JWTPayloadType {
     userid: string;
     role: string;
 }
 
 export const GenerateJwtAccessToken = (
-    payload: JWTpayloadType,
+    payload: JWTPayloadType,
     secret: string,
     duration: string
 ) => {
