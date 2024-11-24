@@ -1,20 +1,21 @@
 import { Request, Response } from "express";
 import { CustomError } from "../errors/error.cutsom";
 
-export const ErrorHandler = async (
+export const ErrorHandler = (
     error: ErrorCallback,
     req: Request,
     res: Response
-): Promise<any> => {
+): void => {
     try {
         if (error instanceof CustomError) {
-            return res.status(error.StatusCode).json(error.serializeError);
+            res.status(error.StatusCode).json(error.serializeError);
         } else {
-            return res
+            res
                 .status(501)
                 .json({ message: "Unknow error! something went wrong" });
         }
     } catch (err) {
         console.log(err);
+        res.status(500).json({ message: "Critical server error" });
     }
 };

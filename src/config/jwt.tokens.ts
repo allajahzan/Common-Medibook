@@ -1,7 +1,6 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 import { ForbidonError } from "../errors/error.forbidon";
-import { ErrorHandler } from "../middlewares/error.handler";
 
 export interface JWTpayloadType {
     userid: string;
