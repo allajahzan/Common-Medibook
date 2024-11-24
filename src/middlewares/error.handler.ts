@@ -1,10 +1,11 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { CustomError } from "../errors/error.cutsom";
 
 export const ErrorHandler = (
     error: ErrorCallback,
     req: Request,
-    res: Response
+    res: Response,
+    next: NextFunction
 ): void => {
     try {
         if (error instanceof CustomError) {
