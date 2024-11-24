@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { CustomError } from "../errors/error.cutsom";
 
-export const errorHandler = async (
+export const ErrorHandler = async (
     error: ErrorCallback,
     req: Request,
     res: Response
