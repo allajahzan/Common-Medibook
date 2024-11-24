@@ -4,10 +4,10 @@ export class ForbidonError extends CustomError {
     StatusCode: number = 403;
 
     constructor() {
-        super("Unauthorized access");
+        super("Forbidden");
     }
 
     serializeError(): { message: string }[] {
-        return [{ message: "Unauthorized access" }];
+        return [{ message: "Forbidden" }];
     }
 }
