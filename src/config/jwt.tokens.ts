@@ -7,7 +7,7 @@ export interface JWTPayloadType {
     role: string;
 }
 
-export const GenerateJwtAccessToken = (
+export const GenerateJwtToken = (
     payload: JWTPayloadType,
     secret: string,
     duration: string
