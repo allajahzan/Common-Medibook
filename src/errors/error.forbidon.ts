@@ -1,13 +1,13 @@
 import { CustomError } from "./error.cutsom";
 
 export class ForbidonError extends CustomError {
-    StatusCode: number = 403
+    StatusCode: number = 403;
 
     constructor() {
-        super('Unauthorized access')
+        super("Unauthorized access");
     }
 
-    serializeError(): { message: string; }[] {
-        return [{ message: 'Unauthorized access' }]
+    serializeError(): { message: string }[] {
+        return [{ message: "Unauthorized access" }];
     }
 }

@@ -1,13 +1,13 @@
-import { CustomError } from "./error.cutsom"
+import { CustomError } from "./error.cutsom";
 
 export class NotFoundError extends CustomError {
     StatusCode: number = 404;
 
     constructor() {
-        super('Not found')
+        super("Not found");
     }
 
-    serializeError(): { message: string; }[] {
-        return [{ message: "Not found" }]
+    serializeError(): { message: string }[] {
+        return [{ message: "Not found" }];
     }
 }

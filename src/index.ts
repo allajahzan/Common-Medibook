@@ -1,14 +1,14 @@
 // errors
-export * from './errors/error.cutsom'
-export * from './errors/error.forbidon'
-export * from './errors/error.notFound'
+export * from "./errors/error.cutsom";
+export * from "./errors/error.forbidon";
+export * from "./errors/error.notFound";
 
 //configs
-export * from './config/db.connection'
-export * from './config/jwt.tokens'
+export * from "./config/db.connection";
+export * from "./config/jwt.tokens";
 
 // functions
-export * from './functions/env.checker'
+export * from "./functions/env.checker";
 
 // middlewares
-export * from './middlewares/error.handler'
+export * from "./middlewares/error.handler";
