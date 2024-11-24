@@ -1,6 +1,4 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { Request, NextFunction } from "express";
-import { ForbidonError } from "../errors/error.forbidon";
 
 export interface JWTpayloadType {
     userid: string;
@@ -20,21 +18,12 @@ export const generateJwtAccessToken = (
 };
 
 export const verifyAccessToken = (
-    req: Request,
-    next: NextFunction,
+    token: string,
     secret: string
-) => {
+): JwtPayload | null => {
     try {
-        const token = req.headers["authorization"]?.split(" ")[1];
-        if (!token) throw new ForbidonError();
-
-        const payload = jwt.verify(token, secret) as JwtPayload;
-        if (!payload) throw new ForbidonError();
-
-        req.body = payload;
-
-        next();
+        return jwt.verify(token, secret) as JwtPayload;
     } catch (err: any) {
-        next(err);
+        throw new Error(err.message);
     }
 };
