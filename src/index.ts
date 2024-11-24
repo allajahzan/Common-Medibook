@@ -5,7 +5,10 @@ export * from './errors/error.notFound'
 
 //configs
 export * from './config/db.connection'
-export * from './config/env.checker'
+export * from './config/jwt.tokens'
+
+// functions
+export * from './functions/env.checker'
 
 // middlewares
 export * from './middlewares/error.handler'
