@@ -11,9 +11,7 @@ export const ErrorHandler = (
         if (error instanceof CustomError) {
             res.status(error.StatusCode).json(error.serializeError());
         } else {
-            res
-                .status(501)
-                .json({ message: "Unknow error! something went wrong" });
+            res.status(501).json({ message: "Unknow error! something went wrong" });
         }
     } catch (err) {
         console.log(err);

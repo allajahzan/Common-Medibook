@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { response, Response } from "express";
 
 export enum HttpStatusCode {
     OK = 200,
@@ -23,16 +23,19 @@ export enum ResponseMessage {
 }
 
 export const SendResponse = async <D>(
-    res: Response,
     statusCode: number,
     message: string,
     data: D
 ) => {
-    try {
-        res
-            .status(statusCode)
-            .json({ status: statusCode >= 200 && statusCode <= 300, message, data });
-    } catch (err: any) {
-        throw new Error(err);
-    }
+    (function <D>(res: Response) {
+        try {
+            res.status(statusCode).json({
+                status: statusCode >= 200 && statusCode <= 300,
+                message,
+                data,
+            });
+        } catch (err: any) {
+            throw new Error(err);
+        }
+    })(response);
 };

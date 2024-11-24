@@ -23,15 +23,15 @@ export const VerifyAccessToken = (secret: string) => {
     return function (req: Request, res: Response, next: NextFunction) {
         try {
             const token = req.headers["authorization"]?.split(" ")[1];
-            if (!token) throw new ForbidonError()
+            if (!token) throw new ForbidonError();
 
             const payload = jwt.verify(token as string, secret);
-            if (!payload) throw new ForbidonError()
+            if (!payload) throw new ForbidonError();
 
             req.body = payload;
             next();
         } catch (err: any) {
-            next(err)
+            next(err);
         }
     };
 };
