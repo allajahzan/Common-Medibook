@@ -23,19 +23,18 @@ export enum ResponseMessage {
 }
 
 export const SendResponse = async <D>(
+    res: Response,
     statusCode: number,
     message: string,
     data: D
 ) => {
-    (function <D>(res: Response) {
-        try {
-            res.status(statusCode).json({
-                status: statusCode >= 200 && statusCode <= 300,
-                message,
-                data,
-            });
-        } catch (err: any) {
-            throw new Error(err);
-        }
-    })(response);
+    try {
+        res.status(statusCode).json({
+            status: statusCode >= 200 && statusCode <= 300,
+            message,
+            data,
+        });
+    } catch (err: any) {
+        throw new Error(err);
+    }
 };
