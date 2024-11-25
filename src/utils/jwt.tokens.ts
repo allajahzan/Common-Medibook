@@ -1,6 +1,7 @@
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 import { ForbidonError } from "../errors/error.forbidon";
+import { Unauthorized } from "../errors/error.unathorized";
 
 export interface JWTPayloadType {
     userid: string;
@@ -19,27 +20,36 @@ export const GenerateJwtToken = (
     }
 };
 
-// export const VerifyAccessToken = (
-//     secret: string
-// ): (req: Request, next: NextFunction) => void => {
-//     return function (req: Request, next: NextFunction) {
-//         try {
-//             const token = req.headers["authorization"]?.split(" ")[1];
-//             if (!token) throw new ForbidonError();
+const isTokenExpired = (token: string): boolean => {
+    const decoded = jwt.decode(token) as JwtPayload | null;
+    if (!decoded || !decoded.exp) {
+        throw new ForbidonError();
+    }
 
-//             const payload = jwt.verify(token as string, secret);
-//             if (!payload) throw new ForbidonError();
+    const currentTime = Math.floor(Date.now() / 1000);
+    return decoded.exp < currentTime;
+};
 
-//             console.log("reached here");
-            
+export const VerifyAccessToken = (
+    secret: string
+): ((req: Request, next: NextFunction) => void) => {
+    return function (req: Request, next: NextFunction) {
+        try {
+            const token = req.headers["authorization"]?.split(" ")[1];
+            if (!token) throw new ForbidonError();
 
-//             req.body = payload;
+            if (isTokenExpired(token)) {
+                throw new Unauthorized("Token expired");
+            }
 
-//             console.log(req.body);
-            
-//             next();
-//         } catch (err: any) {
-//             next(err);
-//         }
-//     };
-// };
+            const payload = jwt.verify(token as string, secret);
+            if (!payload) throw new ForbidonError();
+
+            req.body.payload = payload;
+
+            next();
+        } catch (err: any) {
+            next(err);
+        }
+    };
+};
