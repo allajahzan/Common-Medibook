@@ -1,8 +1,6 @@
 import amqp from "amqplib";
 
 export const RabbitMQConnection = async (url: string) => {
-    console.log(url);
-
     let connection: amqp.Connection | null = null;
     let ATTEMPT = 0;
     let RETRIES = 10;
