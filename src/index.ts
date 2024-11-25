@@ -6,6 +6,9 @@ export * from "./errors/error.conflict";
 
 //configs
 export * from "./config/db.connection";
+export * from './config/rabbitmq.connection'
+
+// utils
 export * from "./utils/jwt.tokens";
 export * from "./utils/bcrypt";
 
@@ -15,3 +18,4 @@ export * from "./functions/responses";
 
 // middlewares
 export * from "./middlewares/error.handler";
+
