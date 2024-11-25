@@ -19,27 +19,27 @@ export const GenerateJwtToken = (
     }
 };
 
-export const VerifyAccessToken = (
-    secret: string
-): ((req: Request, next: NextFunction) => void) => {
-    return function (req: Request, next: NextFunction) {
-        try {
-            const token = req.headers["authorization"]?.split(" ")[1];
-            if (!token) throw new ForbidonError();
+// export const VerifyAccessToken = (
+//     secret: string
+// ): (req: Request, next: NextFunction) => void => {
+//     return function (req: Request, next: NextFunction) {
+//         try {
+//             const token = req.headers["authorization"]?.split(" ")[1];
+//             if (!token) throw new ForbidonError();
 
-            const payload = jwt.verify(token as string, secret);
-            if (!payload) throw new ForbidonError();
+//             const payload = jwt.verify(token as string, secret);
+//             if (!payload) throw new ForbidonError();
 
-            console.log("reached here");
+//             console.log("reached here");
             
 
-            req.body = payload;
+//             req.body = payload;
 
-            console.log(req.body);
+//             console.log(req.body);
             
-            next();
-        } catch (err: any) {
-            next(err);
-        }
-    };
-};
+//             next();
+//         } catch (err: any) {
+//             next(err);
+//         }
+//     };
+// };
