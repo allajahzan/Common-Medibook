@@ -1,6 +1,6 @@
 {
   "name": "@mb-medibook/common",
-  "version": "1.0.36",
+  "version": "1.0.37",
   "description": "common module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
