@@ -11,7 +11,7 @@ export const GenerateJwtToken = (
     payload: JWTPayloadType,
     secret: string,
     duration: string
-) => {
+): string => {
     try {
         return jwt.sign(payload, secret, { expiresIn: duration });
     } catch (err: any) {
@@ -19,7 +19,9 @@ export const GenerateJwtToken = (
     }
 };
 
-export const VerifyAccessToken = (secret: string) => {
+export const VerifyAccessToken = (
+    secret: string
+): ((req: Request, next: NextFunction) => void) => {
     return function (req: Request, next: NextFunction) {
         try {
             const token = req.headers["authorization"]?.split(" ")[1];

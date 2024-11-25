@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const MongoDBConnection = async (url: string) => {
+export const MongoDBConnection = async (url: string) : Promise<void> => {
     try {
         await mongoose.connect(url, {
             connectTimeoutMS: 1000,

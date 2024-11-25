@@ -22,12 +22,12 @@ export enum ResponseMessage {
     INTERNAL_SERVER_ERROR = "Internal server error",
 }
 
-export const SendResponse = async <D>(
+export const SendResponse = <D>(
     res: Response,
     statusCode: number,
     message: string,
     data: D
-) => {
+): void => {
     try {
         res.status(statusCode).json({
             status: statusCode >= 200 && statusCode <= 300,
