@@ -6,7 +6,7 @@ export const MongoDBConnection = async (url: string) => {
             connectTimeoutMS: 1000,
             serverSelectionTimeoutMS: 5000,
         });
-        return "successfully connected to db";
+        console.log("successfully connected to db")
     } catch (err: any) {
         throw new Error(err.message);
     }
