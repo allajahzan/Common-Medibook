@@ -6,8 +6,8 @@ export * from "./errors/error.conflict";
 
 //configs
 export * from "./config/db.connection";
-export * from "./config/jwt.tokens";
-export * from "./config/bcrypt";
+export * from "./utils/jwt.tokens";
+export * from "./utils/bcrypt";
 
 // functions
 export * from "./functions/env.checker";
