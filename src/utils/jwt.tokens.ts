@@ -4,7 +4,7 @@ import { ForbidonError } from "../errors/error.forbidon";
 import { Unauthorized } from "../errors/error.unathorized";
 
 export interface JWTPayloadType {
-    userid: string;
+    userId: string;
     role: string;
 }
 
