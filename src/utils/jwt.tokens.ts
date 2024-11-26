@@ -45,9 +45,6 @@ export const VerifyAccessToken = (
             const payload = jwt.verify(token as string, secret);
             if (!payload) throw new ForbidonError();
 
-            console.log(payload);
-            
-
             req.body.payload = payload;
 
             next();
