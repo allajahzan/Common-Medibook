@@ -3,6 +3,7 @@ export * from "./errors/error.cutsom";
 export * from "./errors/error.forbidon";
 export * from "./errors/error.notFound";
 export * from "./errors/error.conflict";
+export * from './errors/error.unathorized'
 
 //configs
 export * from "./config/db.connection";
