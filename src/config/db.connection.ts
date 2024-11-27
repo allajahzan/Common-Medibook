@@ -7,7 +7,7 @@ export const MongoDBConnection = async (url: string): Promise<void> => {
     let isConnected = false;
     while (!isConnected) {
         try {
-            await mongoose.connect(url + "k", {
+            await mongoose.connect(url, {
                 connectTimeoutMS: 1000,
                 serverSelectionTimeoutMS: 5000,
             });
