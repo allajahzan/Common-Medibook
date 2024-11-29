@@ -42,14 +42,8 @@ export const VerifyAccessToken = (
                 throw new Unauthorized("Token expired");
             }
 
-            console.log(secret);
-            
-
             const payload = jwt.verify(token as string, secret);
             if (!payload) throw new ForbidonError();
-
-            console.log(payload);
-            
 
             req.headers["x-user-payload"] = JSON.stringify(payload);
 
